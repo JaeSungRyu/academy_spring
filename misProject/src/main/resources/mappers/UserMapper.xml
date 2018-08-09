@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mis.mapper.UserMapper">
+	<select id="login" resultType="com.mis.domain.UserVO">
+		SELECT u.usid
+			 , u.upw
+			 , u.uname
+	      FROM tbl_user u
+	     WHERE u.usid = #{usid}
+	       AND u.upw = #{upw}
+	</select>
+	
+</mapper>

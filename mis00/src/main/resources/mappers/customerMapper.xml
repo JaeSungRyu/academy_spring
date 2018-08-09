@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org//dtd/mybatis-3-mapper.dtd">
+	
+	<!-- 해당 매퍼를 불러오기 위한 namespace설정 -->
+	<mapper namespace="com.mis.mapper.CustomerMapper">
+		
+		<!-- 고객정보 삽입을 위한 커리문 -->
+		<insert id="insertCustomer">
+			insert into customer (userid, name, birthyear, address, phone, grade)
+			values (#{userid},#{name},#{birthyear},#{address},#{phone},#{grade})
+		
+		</insert>
+		
+		<!-- 고객 조회를 위한 커리문 -->
+		<select id="readCustomer" resultType="com.mis.domain.CustomerVO">
+			select *
+			  from customer
+			 where userid = #{userid}
+		</select>
+		
+		
+		<!-- 고객정보 수정을 위한 커리문 -->
+		<update id="updateCustomer">
+			update customer c
+			   set c.name = #{name}
+				  ,c.birthyear = #{birthyear}
+				  ,c.address = #{address}
+				  ,c.phone = #{phone}
+				  ,c.grade = #{grade}
+				  ,c.moddate = sysdate			   
+			 where userid = #{userid}
+
+		</update>
+		
+		<!-- 고객정보 삭제를 위한 커리문 -->
+		<delete id="deleteCustomer">
+			delete from customer
+			 where userid = #{userid}
+		</delete>	
+		
+		
+		
+	
+	</mapper>
